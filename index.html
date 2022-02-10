@@ -77,7 +77,7 @@
         <div class="container">
           <div class="hero-content">
             <h1 class="main-header">Efektywne rozwiązania dla Waszego biznesu</h1>
-            <button class="hero-btn" type="button">Zamów usługę</button>
+            <button class="hero-btn" type="button" data-modal-open>Zamów usługę</button>
           </div>
         </div>
       </section>
@@ -473,5 +473,19 @@
         </div>
       </div>
     </footer>
+
+    <!-- MODAL WINDOW -->
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal-window">
+        <button class="close-btn" type="button" data-modal-close>
+          <svg class="close-btn-icon">
+            <use href="./images/icons.svg#icon-close-btn"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- SCRIPT FOR MODAL WINDOW -->
+    <script src="./js/modal.js"></script>
   </body>
 </html>
