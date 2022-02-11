@@ -7,6 +7,7 @@
   --colorWhite: #ffffff;
   --colorWhite-opacity60: #ffffff99;
   --colorAccent: #2196f3;
+  --colorAccentOpacity: #2196f3e5;
   --colorBackground-dark: #2f303a;
   --colorBackground-light: #f5f4fa;
   --colorBorder-header: #ececec;
@@ -57,6 +58,7 @@ img {
   display: block;
 }
 
+/* ===== COMPONENTS ===== */
 .styles-for-lists {
   list-style: none;
 }
@@ -76,7 +78,6 @@ img {
   padding-bottom: 94px;
 }
 
-/* ===== COMPONENTS ===== */
 .website-logo {
   font-family: var(--fontSecondary);
   font-weight: var(--fontWeight-bold);
@@ -120,6 +121,7 @@ img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link-link-light {
@@ -198,6 +200,7 @@ img {
   font-weight: var(--fontWeight-medium);
   line-height: 1.143;
   letter-spacing: var(--lettSpacing-02);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-list-links:hover,
@@ -236,7 +239,18 @@ img {
 }
 
 .navigation-active-link {
-  color: var(--colorAccent);
+  position: relative;
+}
+
+.navigation-active-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 45px;
+  width: 100%;
+  height: 4px;
+  background-color: var(--colorAccent);
+  border-radius: 2px;
 }
 /* ===== END HEADER ===== */
 
@@ -272,6 +286,7 @@ img {
   line-height: 1.714;
   letter-spacing: var(--lettSpacing-03);
   color: var(--colorWhite);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address-list-link:hover,
@@ -387,6 +402,27 @@ img {
   display: flex;
   justify-content: space-between;
 }
+
+.what-we-do--list-item {
+  position: relative;
+}
+
+.what-we-do--list-label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-top: 27px;
+  padding-bottom: 27px;
+  font-weight: var(--fontWeight-bold);
+  font-size: var(--fontSize-14);
+  line-height: 1.143;
+  text-align: center;
+  letter-spacing: var(--lettSpacing-03);
+  text-transform: uppercase;
+  color: var(--colorWhite);
+  background-color: rgba(47, 48, 58, 0.8);
+}
 /* ----- END WHAT WE DO ----- */
 
 /* ----- TEAM SECTION ----- */
@@ -444,6 +480,7 @@ img {
   height: 92px;
   border: 1px solid var(--colorPrimary-icons);
   border-radius: 4px;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-list-link:hover,
@@ -455,6 +492,7 @@ img {
   width: 106px;
   height: 60px;
   fill: var(--colorPrimary-icons);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-list-link:hover > .customers-icon,
@@ -488,6 +526,7 @@ img {
   letter-spacing: var(--lettSpacing-03);
   background-color: var(--colorBackground-light);
   cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-filter-set-btn:hover,
@@ -504,7 +543,9 @@ img {
 }
 
 .portfolio-project-item {
+  max-width: 370px;
   border: 1px solid var(--colorBorder-projects);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-project-item:hover {
@@ -513,6 +554,39 @@ img {
 
 .portfolio-project-item:nth-child(-n+6) {
   margin-bottom: 30px;
+}
+
+.portfolio-project-item-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--colorPrimary);
+}
+
+.portfolio-project-overlay {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.portfolio-project-overlay-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 49px 45px 49px 24px;
+  font-size: var(--fontSize-18);
+  line-height: 1.556;
+  letter-spacing: 0.03em;
+  color: var(--colorWhite);
+  background-color: var(--colorAccentOpacity);
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-project-item:hover .portfolio-project-overlay-text {
+  transform: translateY(0);
 }
 
 .portfolio-project-name {
@@ -540,7 +614,8 @@ img {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 999;
 }
 
@@ -581,5 +656,6 @@ img {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transform: scale(1.1);
 }
 /* ===== END BACKDROP ===== */
